@@ -1,0 +1,132 @@
+@{
+    ViewData["Title"] = "Job Application Form";
+}
+
+<style>
+    .form-section {
+        background-color: #f8f9fa;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+    
+    .skill-item, .reference-item {
+        background-color: white;
+        padding: 15px;
+        margin-bottom: 10px;
+        border: 1px solid #dee2e6;
+        border-radius: 3px;
+        position: relative;
+    }
+    
+    .remove-btn {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+    .remove-btn:hover {
+        background-color: #c82333;
+    }
+    
+    .add-btn {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+    .add-btn:hover {
+        background-color: #218838;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ced4da;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+    
+    #output {
+        background-color: #e9ecef;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+        display: none;
+    }
+</style>
+
+<h1>@ViewData["Title"]</h1>
+<p>Fill out the form below. You can add multiple skills and references dynamically.</p>
+
+<form id="jobApplicationForm">
+    <!-- Basic Information Section -->
+    <div class="form-section">
+        <h2>Basic Information</h2>
+        
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+    </div>
+    
+    <!-- Skills Section -->
+    <div class="form-section">
+        <h2>Skills</h2>
+        <div id="skillsContainer">
+            <!-- Skills will be added here dynamically -->
+        </div>
+        <button type="button" class="add-btn" id="addSkillBtn">Add Skill</button>
+    </div>
+    
+    <!-- References Section -->
+    <div class="form-section">
+        <h2>Professional References</h2>
+        <div id="referencesContainer">
+            <!-- References will be added here dynamically -->
+        </div>
+        <button type="button" class="add-btn" id="addReferenceBtn">Add Reference</button>
+    </div>
+    
+    <button type="submit" class="add-btn" style="background-color: #007bff; font-size: 16px;">Submit Application</button>
+</form>
+
+<div id="output">
+    <h3>Application Summary</h3>
+    <div id="summaryContent"></div>
+</div>
+
+@section Scripts {
+    <script defer type="module" src="~/js/jobApplicationForm.js"></script>
+}
